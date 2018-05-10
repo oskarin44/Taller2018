@@ -1,4 +1,10 @@
 package com.ucbcba.taller.repositories;
 
-public interface CityRepository {
+import com.ucbcba.taller.entities.City;
+import org.springframework.data.repository.CrudRepository;
+
+import javax.transaction.Transactional;
+
+@Transactional
+public interface CityRepository extends CrudRepository<City,Integer> {
 }
