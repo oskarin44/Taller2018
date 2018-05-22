@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Categorias</title>
+    <title>Ciudades</title>
 </head>
 <body>
-<h1>Categorias</h1>
+<h1>Ciudades</h1>
 
-<a href="/newCategory">Agregar</a>
+<a href="/newCity">Agregar</a>
 <br/>
 <a href="bienvenidos">Volver</a>
 
@@ -24,21 +24,20 @@
         </th>
     </tr>
 
-    <tr th:each="category : ${cateList}">
-        <td th:text="${category.id}">
+    <tr th:each="city : ${cities}">
+        <td th:text="${city.id}">
         </td>
-        <td th:text="${category.nombre}">
+        <td th:text="${city.nombre}">
         </td>
         <td>
-            <a th:href="${'/showCategory/' + category.id}">Ver</a>
-            <a th:href="${'/editCategory/' + category.id}">Editar</a>
-            <a th:href="${'/deleteCategory/' + category.id}">Eliminar</a>
+            <a th:href="${'/showCity/' + city.id}">Ver</a>
+            <a th:href="${'/editCity/' + city.id}">Editar</a>
+            <a th:href="${'/deleteCity/' + city.id}">Eliminar</a>
         </td>
 
     </tr>
 
 
 </table>
-
 </body>
 </html>

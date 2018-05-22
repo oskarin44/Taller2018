@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+</head>
+<body>
+<h1> Editar Ciudad</h1>
+<br/>
+<form action="/city" method="POST">
+    <input type="hidden" name="id" th:value="${city.id}"/>
+    <p>Ingrese nuevo nombre de ciudad:</p>
+    <textarea name="nombre" th:text="${city.nombre}" id="name" cols="30" rows="3">
+    </textarea>
+    <br/>
+    <br/>
+    <input type="submit" value="Guardar"></input>
+</form>
+
+</body>
+</html>

@@ -7,15 +7,13 @@
 <body>
 <h1>Restaurante</h1>
 
-<b>Id:</b> <p th:text="${rest.id}"></p>
-<b>Nombre:</b> <p th:text="${rest.name}"></p>
-<b>Telefono:</b> <p th:text="${rest.phone}"></p>
-<b>Description:</b> <p th:text="${rest.description}"></p>
-<b>Foto:</b> <p th:text="${rest.photo}"></p>
-<b>Categoria:</b> <p th:text="${rest.category.nombre}"></p>
-<b>Ciudad:</b> <p th:text="${rest.city.nombre}"></p>
 <img th:src="${'/files/' + rest.name + '.jpg'}" />
 <br/>
+<p th:text="${rest.name}"></p>
+<p th:text="${rest.description}"></p>
+<p th:text="${rest.category.nombre}"></p>
+<b>Telefono:</b> <p th:text="${rest.phone}"></p>
+<b>Ciudad:</b> <p th:text="${rest.city.nombre}"></p>
 <br/>
 <b>Likes:</b> <p th:text="${rest.likes}"></p>
 <a th:href="${'/like/' + rest.id}">Like</a>
