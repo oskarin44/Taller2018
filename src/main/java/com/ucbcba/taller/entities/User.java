@@ -2,6 +2,7 @@ package com.ucbcba.taller.entities;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,6 +21,7 @@ public class User {
     private Blob photo;
     private boolean admin=false;
     private Set<Role> roles;
+    private List<Comment> comments;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -62,6 +64,7 @@ public class User {
         return roles;
     }
 
+
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -97,4 +100,10 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Comment> getComments(){return comments;}
+
+    public void setComments(List<Comment> comments){this.comments=comments;}
+
 }

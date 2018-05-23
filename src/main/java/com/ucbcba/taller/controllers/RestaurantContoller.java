@@ -2,10 +2,7 @@ package com.ucbcba.taller.controllers;
 
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
-import com.ucbcba.taller.entities.Category;
-import com.ucbcba.taller.entities.City;
-import com.ucbcba.taller.entities.User;
-import com.ucbcba.taller.entities.Restaurant;
+import com.ucbcba.taller.entities.*;
 import com.ucbcba.taller.services.CategoryService;
 import com.ucbcba.taller.services.CityService;
 import com.ucbcba.taller.services.RestaurantService;
@@ -79,6 +76,9 @@ public class RestaurantContoller {
     String showRes(@PathVariable Integer id, Model model) {
         Restaurant rest = restaurantService.getRestaurant(id);
         model.addAttribute("rest", rest);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+        model.addAttribute("comment",new Comment(rest,user));
         return "showRestaurant";
     }
 

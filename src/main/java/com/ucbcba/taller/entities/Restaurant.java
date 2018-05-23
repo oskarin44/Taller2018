@@ -4,6 +4,7 @@ package com.ucbcba.taller.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
+import java.util.List;
 
 @Entity
 public class Restaurant {
@@ -31,6 +32,9 @@ public class Restaurant {
     @ManyToOne
     @JoinColumn(name="city_id")
     private City city;
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    List<Comment> comments;
 
 
     public Integer getId() {
@@ -60,6 +64,10 @@ public class Restaurant {
     public String getDescription() {
         return description;
     }
+
+    public List<Comment> getComments(){return comments;}
+
+    public void setComments(List<Comment> comments){this.comments=comments;}
 
     public void setDescription(String description) {
         this.description = description;

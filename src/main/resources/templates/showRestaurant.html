@@ -15,5 +15,14 @@
 <b>Categoria:</b> <p th:text="${rest.category.nombre}"></p>
 <b>Ciudad:</b> <p th:text="${rest.city.nombre}"></p>
 
+<form action="/comment" method="POST">
+    <input type="hidden" name="rest" th:value="${rest.id}">
+    
+    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+    <br>
+    <input type="submit" value="Guardar"></input>
+</form>
+
+
 </body>
 </html>
