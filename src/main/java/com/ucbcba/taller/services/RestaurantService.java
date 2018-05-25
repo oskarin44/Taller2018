@@ -1,5 +1,6 @@
 package com.ucbcba.taller.services;
 
+import com.ucbcba.taller.entities.Category;
 import com.ucbcba.taller.entities.Restaurant;
 
 public interface RestaurantService {
@@ -13,4 +14,6 @@ public interface RestaurantService {
     void deleteRestaurant(Integer id);
 
     Restaurant findRestaurantByName(String name);
+
+
 }

@@ -140,11 +140,12 @@ public class RestaurantContoller {
         return "redirect:/showRestaurant/" + res.getId();
     }
 
-    @RequestMapping(value="/search/{name}", method = RequestMethod.GET)
+    /*@RequestMapping(value="/search/{name}", method = RequestMethod.GET)
     public String buscarRestaurant(@PathVariable("name") String name, Model model){
         Restaurant restaurant = restaurantService.findRestaurantByName(name);
         model.addAttribute("restaurant", restaurant);
         return "redirect:/showRestaurant/"+ restaurant.getId();
-    }
+    }*/
+
 
 }

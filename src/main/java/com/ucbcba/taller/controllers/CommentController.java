@@ -31,7 +31,7 @@ public class CommentController {
 
     @RequestMapping(value="/comment", method = RequestMethod.POST)
     String save(Model model, @Valid Comment comment, BindingResult bindingResult) {
-
+comment.getUser().getId();
         /*if(bindingResult.hasErrors()) {
             Restaurant restaurant = restaurantService.getRestaurant(comment.getRestaurant().getId());
             model.addAttribute("rest", restaurant);
@@ -41,6 +41,7 @@ public class CommentController {
             return "showRestaurant";
         }*/
         commentService.saveComment(comment);
+
         return "redirect:/showRestaurant/"+comment.getRestaurant().getId();
     }
 }

@@ -42,4 +42,5 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Restaurant findRestaurantByName(String name){
         return restaurantRepository.findRestaurantByName(name);
     }
+
 }

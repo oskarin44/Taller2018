@@ -104,6 +104,11 @@ h2{
     fot-size: 30px;
 }
 
+#map{
+    height: 500px;
+    width: 500px;
+}
+
 </style>
 
 <body>
@@ -149,6 +154,15 @@ h2{
     <p th:each="comment : ${rest.comments}" >
         <span th:text="${comment.text}"></span><br/>
     </p>
+
+    <div id="map"></div>
+    <script>
+        function initMap(){
+            const location = {lat: -17.373320, lng:-66.152804};
+            const map=new google.maps.Map(document.getElementById("map"), {zoom: 4, center: location});
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUgL8WPGLA9u7hNjNQ_pXpvV71Swtj7Ew&callback=initMap" async defer></script>
 
 </div>
 </body>
