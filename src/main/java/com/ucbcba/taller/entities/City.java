@@ -1,11 +1,9 @@
 package com.ucbcba.taller.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class City {
@@ -17,6 +15,9 @@ public class City {
     @NotNull
     private String nombre;
 
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<Restaurant> restaurantList;
+
     public Integer getId(){return id;}
 
     public String getNombre(){return nombre;}
@@ -24,4 +25,9 @@ public class City {
     public void setId(Integer id){this.id=id;}
 
     public void setNombre(String nombre){this.nombre=nombre;}
+
+
+    public List<Restaurant> getRestaurantList(){return restaurantList;}
+
+    public  void setRestaurantList(List<Restaurant> restaurantList){this.restaurantList=restaurantList; }
 }

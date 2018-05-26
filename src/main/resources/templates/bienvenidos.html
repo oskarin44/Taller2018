@@ -15,6 +15,42 @@
             const nombre = document.getElementById("input-buscarRes").value;
             location.href = "/search/"+nombre;
         }
+
+         function cochabambaCity(){
+               location.href="/citysearch/"+50;
+        }
+
+        function laPazCity(){
+               location.href="/citysearch/"+51;
+        }
+
+        function santaCruzCity(){
+               location.href="/citysearch/"+52;
+        }
+
+        function sucreCity(){
+               location.href="/citysearch/"+53;
+        }
+
+         function oruroCity(){
+               location.href="/citysearch/"+54;
+        }
+
+         function pandoCity(){
+               location.href="/citysearch/"+55;
+        }
+
+        function tarijaCity(){
+               location.href="/citysearch/"+56;
+        }
+
+         function beniCity(){
+               location.href="/citysearch/"+57;
+        }
+
+         function potosiCity(){
+               location.href="/citysearch/"+58;
+        }
     </script>
 </head>
 <style>
@@ -237,6 +273,32 @@ h2{
             </div>
         </div>
         <li><a class="vermas" href="/showRestaurants">Ver mas restaurantes</a></li>
+
+        <div class="row text-center">
+            <h2>Ciudades</h2>
+            <br/><br/>
+            <div class="col-sm-4">
+                <h2>
+                    <li><a class="cocha" onclick="cochabambaCity()">Cochabamba</a></li><br/>
+                    <li><a class="tarija" onclick="tarijaCity()">Tarija</a></li><br/>
+                    <li><a class="sucre" onclick="sucreCity()">Sucre</a></li>
+                </h2>
+            </div>
+            <div class="col-sm-4">
+                <h2>
+                    <li><a class="santaCruz" onclick="santaCruzCity()">Santa Cruz</a></li><br/>
+                    <li><a class="beni" onclick="beniCity()">Beni</a></li><br/>
+                    <li><a class="pando" onclick="pandoCity()">Pando</a></li>
+                </h2>
+            </div>
+            <div class="col-sm-4">
+                <h2>
+                    <li><a class="laPaz" onclick="laPazCity()">La Paz</a></li><br/>
+                    <li><a class="oruro" onclick="oruroCity()">Oruro</a></li><br/>
+                    <li><a class="potosi" onclick="potosiCity()">Potosi</a></li>
+                </h2>
+            </div>
+        </div>
 
     </div>
 </div>

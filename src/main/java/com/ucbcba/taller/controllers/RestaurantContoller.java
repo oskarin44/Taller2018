@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.text.AttributedString;
+import java.util.List;
 
 @Controller
 public class RestaurantContoller {
@@ -191,6 +192,14 @@ public class RestaurantContoller {
         Restaurant restaurant = restaurantService.findRestaurantByName(name);
         model.addAttribute("restaurant", restaurant);
         return "redirect:/showRestaurantPublic/"+ restaurant.getId();
+    }
+
+    @RequestMapping(value="/citysearch/{city_id}")
+    public String buscarCiudad(@PathVariable Integer city_id, Model model){
+        City city=cityService.getCity(city_id);
+        List<Restaurant> resList=city.getRestaurantList();
+        model.addAttribute("restList", resList);
+        return  "showRestaurantsPublic";
     }
 
 }
