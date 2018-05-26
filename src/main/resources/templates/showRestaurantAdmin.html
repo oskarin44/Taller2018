@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Restaurants</title>
+    <title>Show</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet"/>
@@ -17,15 +17,18 @@
 .jumbotron {
     background: linear-gradient(#080708, #DD1C1A);
     color: #ffffff;
+    diplay: inline-block;
 }
 
 .jumbotron h1 {
     font-family: 'Sacramento', cursive;
+    text-align : center;
 }
+
 
 .jumbotron p {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     letter-spacing: 5px;
     word-spacing: -3.6px;
     font-variant: small-caps;
@@ -73,10 +76,11 @@ h2{
     margin-top:3%;
     margin-bottom:3%;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     letter-spacing: 5px;
     word-spacing: -3.6px;
     font-variant: small-caps;
+    margin-left:200px;
 }
 
 .middle {
@@ -104,17 +108,70 @@ h2{
     fot-size: 30px;
 }
 
+.up div{
+    display: inline-block;
+    text-align:center;
+}
+
+.down p{
+    text-align:center;
+}
+
+.down h3{
+    margin-left:200px;
+    text-align:left;
+}
+
+#izquierda{
+    margin-top:0px;
+    margin-left:200px;
+    text-align:left;
+}
+
+#derecha{
+    margin-right:300px;
+    border:1px solid white;
+    border-radius: 10px;
+    float:right;
+    padding-left:2em;
+    padding-right:8em;
+}
+
+#derecha h3{
+    text-align:left;
+}
+
+#derecha h4{
+    text-align:left;
+}
+
+
+#derecha p{
+    text-align:center;
+}
+
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+
+
 </style>
 
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/welcome">TH</a>
+            <a class="navbar-brand" href="/bienvenidos">TH</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -125,47 +182,50 @@ h2{
     </div>
 </nav>
 
-<div class="jumbotron text-center">
+<div class="jumbotron">
+    <hr/>
     <h1>TengoHambre</h1>
-    <h2>Restaurantes</h2>
+    <hr/>
+    <h2 th:text="${rest.name}"></h2>
+    <div class = "up">
+        <div id = "izquierda">
+            <img th:src="${'/files/' + rest.name + '.jpg'}" height= "400" width= "400" align="middle"/>
+            <p th:text="${rest.photo}"></p>
+            <table>
+                <th><p>Likes:</p></th>
+                <th><p th:text="${rest.likes}"></p></th>
+            </table>
+        </div>
 
+        <div id = "derecha">
+            <h3>Informacion</h3>
+            <br/>
+            <table>
+                <th><h4>Telefono :</h4></th>
+                <th><h4 th:text="${rest.phone}"></h4></th>
+            </table>
+            <table>
+                <th><h4>Categoria:</h4></th>
+                <th><h4 th:text="${rest.category.nombre}"></h4></th>
+            </table>
+            <table>
+                <th><h4>Ciudad:</h4></th>
+                <th><h4 th:text="${rest.city.nombre}"></h4></th>
+            </table>
 
-    <a href="/newRestaurant">Agregar</a>
-
-    <table>
-        <tr>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Telefono
-            </th>
-            <th>
-                Foto
-            </th>
-            <th>
-                Opciones
-            </th>
-        </tr>
-
-        <tr th:each="restaurant : ${restList}">
-            <td th:text="${restaurant.name}">
-            </td>
-            <td th:text="${restaurant.phone}">
-            </td>
-            <td th:text="${restaurant.photo}">
-            </td>
-            <td>
-                <a th:href="${'/showRestaurantAdmin/' + restaurant.id}">Ver</a>
-                <a th:href="${'/editRestaurant/' + restaurant.id}">Editar</a>
-                <a th:href="${'/deleteRestaurant/' + restaurant.id}">Eliminar</a>
-            </td>
-
-        </tr>
-
-
-    </table>
+            <h4>Descripcion:</h4> <p th:text="${rest.description}"></p>
+        </div>
+    </div>
+    <br/>
+    <hr/>
+    <div class = "down">
+        <h3>Comentarios:</h3>
+        <p th:each="comment : ${rest.comments}" >
+            <span th:text="${comment.text}"></span>
+            <br/>
+        </p>
+    </div>
+    <hr/>
 </div>
-
 </body>
 </html>
